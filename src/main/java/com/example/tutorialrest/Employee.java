@@ -12,12 +12,14 @@ public class Employee {
     private @Id @GeneratedValue Long id;
     private String name;
     private String role;
+    private String email;
 
     Employee() {}
 
-    Employee(String name, String role) {
+    Employee(String name, String role, String email) {
         this.name = name;
         this.role = role;
+        this.email = email;
     }
 
     public Long getId() {
@@ -30,6 +32,14 @@ public class Employee {
 
     public String getRole() {
         return this.role;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setId(Long id) {
@@ -53,16 +63,19 @@ public class Employee {
         Employee employee = (Employee) o;
         return Objects.equals(this.id, employee.id) 
                 && Objects.equals(this.name, employee.name)
+                && Objects.equals(this.email, employee.email)
                 && Objects.equals(this.role, employee.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.name, this.role);
+        return Objects.hash(this.id, this.name, this.email, this.role);
     }
 
     @Override
     public String toString() {
-      return "Employee{" + "id=" + this.id + ", name='" + this.name + '\'' + ", role='" + this.role + '\'' + '}';
+      return "Employee{" + "id=" + this.id + ", name='" + this.name + '\'' +
+      ", email='" + this.email + '\'' +
+       ", role='" + this.role + '\'' + '}';
     }
 }
